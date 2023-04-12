@@ -19,7 +19,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function addMarkerOnMap(lat, lon, festivalName, festivalVille) {
 
     // On ajoute une marque aux coordonnées fournies en paramètre
-    marker = L.marker([lat, lon]).addTo(mymap);
+    let marker = L.marker([lat, lon]).addTo(mymap);
 
     // Un popup qui s'affichera au-dessus du marqueur
     let popup = L.popup().setContent(`<h2>${festivalName}</h2><h3>${festivalVille}</h3>`);

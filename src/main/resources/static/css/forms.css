@@ -11,16 +11,6 @@ html, body {
     box-sizing: border-box;
 }
 
-.container {
-    width: 50%;
-    height: calc(100% - 200px);
-    overflow: auto;
-    margin: auto;
-    padding: 2px;
-    display: flex;
-    flex-direction: column;
-}
-
 form {
     display: grid;
     grid-template-columns: 120px 200px;

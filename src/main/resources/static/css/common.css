@@ -44,8 +44,10 @@ button:hover {
 }
 
 footer {
-    text-align: center;
-    alignment: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
     color: white;
     background-color: black;
     height: 100px;

@@ -16,14 +16,13 @@
 table {
     background-color: #efad5e;
     width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
-    font-size: small;
+    border-collapse: collapse; /* Pas de bordures du tout. */
+    font-size: medium;
 }
 
 thead th {
-    position: sticky;
-    top: 0;
+    position: sticky; /* Permet de faire en sorte que la ligne d'entête reste fixe quand on scroll. */
+    top: 0; /* Permet de positionner vraiment en haut du div sinon il y a un léger décalage lors du scroll. */
     padding: 10px;
     font-weight: bold;
     font-size: medium;
@@ -33,6 +32,7 @@ thead th {
 
 td {
     text-align: center;
+    cursor: default;
 }
 
 tbody tr:nth-child(even) {
@@ -42,7 +42,10 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: #fff;
 }
-
+tbody tr:hover {
+    background-color: rgb(187, 187, 187);
+    cursor: default;
+}
 .action-edit-festival {
     color: white;
     background-color: #333;

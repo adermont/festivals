@@ -5,10 +5,12 @@
     <title th:text="#{festivals.add.title}">Créer un nouveau festival</title>
     <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}">
+    <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/ajouter-festival.css}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 </head>
 <body>
 <h1 th:text="#{festivals.add.title}">Créer un nouveau festival</h1>
-<div class="container">
+<div class="form-container">
     <form th:object="${festival}" th:action="@{/ajouter-festival}" method="post">
         <label for="nom">Nom :</label>
         <input type="text" id="nom" th:field="*{nom}">
@@ -25,9 +27,13 @@
         <label for="lon" th:text="#{festivals.header.lon}">Longitude :</label>
         <input type="text" id="lon" th:field="*{lon}">
         <button id="btn-cancel" type="button" th:text="#{festivals.cancel}">Annuler</button>
-        <button id="btn-ok" type="submit"  th:text="#{festivals.save}">Enregistrer</button>
+        <button id="btn-ok" type="submit" th:text="#{festivals.save}">Enregistrer</button>
     </form>
+    <div id="map"></div>
 </div>
 <script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="../static/js/ajouter-festival.js" th:src="@{/js/ajouter-festival.js}">
+</script>
 </body>
 </html>
