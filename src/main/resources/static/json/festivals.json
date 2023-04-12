@@ -1,0 +1,35 @@
+[
+  {
+    "nom": "Metalearth Festival",
+    "url": "http://www.metalearthfestival.fr/",
+    "debut": "14/04/2023",
+    "fin": "15/04/2023",
+    "ville": "Brest",
+    "cp": "29200",
+    "lieu": "Espace Léo Ferré",
+    "lat": "48.388825",
+    "lon": "-4.482331"
+  },
+  {
+    "nom": "Foutù Festival",
+    "url": "https://foutufestival.wixsite.com/foutu/copie-de-accueil",
+    "debut": "29/04/2023",
+    "fin": "30/04/2023",
+    "ville": "Loqueffret",
+    "cp": "29530",
+    "lieu": "Salle polyvalente, 3 rue de l'école",
+    "lat": "48.31843520742582",
+    "lon": "-3.8596749361172686"
+  },
+  {
+    "nom": "Aux portes de l'enfer",
+    "url": "https://www.billetweb.fr/festival-aux-portes-de-lenfer-2023",
+    "debut": "6/05/2023",
+    "fin": "6/05/2023",
+    "ville": "Brasparts",
+    "cp": "29190",
+    "lieu": "Complexe multi-fonctions",
+    "lat": "48.30078114256639",
+    "lon": "-3.955460501626978"
+  }
+]

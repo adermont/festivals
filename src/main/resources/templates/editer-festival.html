@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" th:lang="${#locale.country}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{festivals.edit.title}">Editer un festival</title>
+    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}">
+</head>
+<body>
+<h1 th:text="#{festivals.edit.title}">Editer un festival</h1>
+<div class="container">
+    <form th:object="${festival}" th:action="@{/editer-festival}" method="post">
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="name" th:text="#{festivals.header.name}">Nom :</label>
+        <input type="text" id="name" th:field="*{nom}">
+        <label for="ville" th:text="#{festivals.header.city}">Ville :</label>
+        <input type="text" id="ville" th:field="*{ville}">
+        <label for="lieu" th:text="#{festivals.header.place}">Lieu :</label>
+        <input type="text" id="lieu" th:field="*{lieu}">
+        <label for="debut" th:text="#{festivals.header.start-date}">Date de début :</label>
+        <input type="date" id="debut" th:field="*{debut}">
+        <label for="fin" th:text="#{festivals.header.end-date}">Date de fin :</label>
+        <input type="date" id="fin" th:field="*{fin}" >
+        <button id="btn-cancel" type="button"  th:text="#{festivals.cancel}">Annuler</button>
+        <button id="btn-ok" type="submit"  th:text="#{festivals.save}">Enregistrer</button>
+    </form>
+</div>
+<script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr" th:lang="${#locale.country}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Festivals de Bretagne</title>
+    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" href="../static/css/festivals.css" th:href="@{/css/festivals.css}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+</head>
+<body>
+<h1 th:text="#{festivals.title}">Les festivals de votre région</h1>
+<div class="container">
+    <div id="map"></div>
+    <div class="under-map">
+        <button id="btn-ajouter-festival">Ajouter un festival</button>
+    </div>
+    <div id="liste-festivals">
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Lieu</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="festival : ${festivals}" th:object="${festival}">
+                <td th:text="*{nom}">n.a.</td>
+                <td th:text="*{ville}">n.a.</td>
+                <td th:text="*{lieu}">n.a.</td>
+                <td th:text="${#temporals.format(festival.debut,'dd MMMM yyyy')}">n.a.</td>
+                <td th:text="${#temporals.format(festival.fin,'dd MMMM yyyy')}">n.a.</td>
+                <td>
+                    <button id="btn-edit-festival" class="action-edit-festival" th:id="*{id}">Editer</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="../static/js/festivals.js" th:src="@{/js/festivals.js}"></script>
+<script src="../static/js/carto.js" th:src="@{/js/carto.js}"></script>
+
+<script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
+    addMarkerOnMap([[*{lat}]], [[*{lon}]],[[*{nom}]],[[*{ville}]]);
+</script>
+
+</body>
+<footer>
+    Langue de l'application : <span th:text="${#locale}">en_US</span>
+</footer>
+</html>
