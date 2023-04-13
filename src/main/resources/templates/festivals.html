@@ -5,7 +5,7 @@
     <title>Festivals de Bretagne</title>
     <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
     <link rel="stylesheet" href="../static/css/festivals.css" th:href="@{/css/festivals.css}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
 </head>
 <body>
 <h1 th:text="#{festivals.title}">Les festivals de votre région</h1>
@@ -18,11 +18,11 @@
         <table>
             <thead>
             <tr>
-                <th>Nom</th>
-                <th>Ville</th>
-                <th>Lieu</th>
-                <th>Début</th>
-                <th>Fin</th>
+                <th th:text="#{festivals.header.name}">Nom</th>
+                <th th:text="#{festivals.header.city}">Ville</th>
+                <th th:text="#{festivals.header.place}">Lieu</th>
+                <th th:text="#{festivals.header.start-date}">Début</th>
+                <th th:text="#{festivals.header.end-date}">Fin</th>
                 <th></th>
             </tr>
             </thead>
@@ -41,7 +41,7 @@
         </table>
     </div>
 </div>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script src="../static/js/festivals.js" th:src="@{/js/festivals.js}"></script>
 <script src="../static/js/carto.js" th:src="@{/js/carto.js}"></script>
 
