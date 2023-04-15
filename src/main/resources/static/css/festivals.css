@@ -1,6 +1,7 @@
 #map {
     flex: 1;
 }
+
 .under-map {
     margin-top: 10px;
     display: inline-block;
@@ -42,10 +43,12 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: #fff;
 }
+
 tbody tr:hover {
     background-color: rgb(187, 187, 187);
     cursor: default;
 }
+
 .action-edit-festival {
     color: white;
     background-color: #333;

@@ -2,6 +2,7 @@ package fr.simplon.festivals.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +33,7 @@ public class Festival
     @NotNull
     private String ville;
 
+    @Digits(integer = 5, fraction = 0)
     private int cp;
 
     private String lieu;

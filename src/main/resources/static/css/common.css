@@ -16,9 +16,21 @@ html, body {
     height: calc(100% - 200px);
     overflow: auto;
     margin: auto;
-    padding: 2px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 10px gray;
+}
+
+.containerIndex {
+    width: 70%;
+    height: calc(100% - 200px);
+    overflow: auto;
+    margin: auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px gray;
 }
 
 h1, h2, h3 {

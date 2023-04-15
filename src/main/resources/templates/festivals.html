@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 th:text="#{festivals.title}">Les festivals de votre région</h1>
-<div class="container">
+<div class="containerIndex">
     <div id="map"></div>
     <div class="under-map">
         <button id="btn-ajouter-festival">Ajouter un festival</button>
@@ -18,23 +18,33 @@
         <table>
             <thead>
             <tr>
-                <th th:text="#{festivals.header.name}">Nom</th>
-                <th th:text="#{festivals.header.city}">Ville</th>
-                <th th:text="#{festivals.header.place}">Lieu</th>
-                <th th:text="#{festivals.header.start-date}">Début</th>
-                <th th:text="#{festivals.header.end-date}">Fin</th>
+                <th><span th:if="${sort} eq 'nom' and ${order eq 'desc'}">▲</span><span th:if="${sort} eq 'nom' and ${order eq 'asc'}">▼</span>
+                    <a th:href="@{/festivals(sort=nom,order=(${sort} eq 'nom' ? ${order} : 'asc'))}" th:text="#{festivals.header.name}">Nom</a>
+                </th>
+                <th><span th:if="${sort} eq 'ville' and ${order eq 'desc'}">▲</span><span th:if="${sort} eq 'ville' and ${order eq 'asc'}">▼</span>
+                    <a th:href="@{/festivals(sort=ville,order=(${sort} eq 'ville' ? ${order} : 'asc'))}" th:text="#{festivals.header.city}">Ville</a>
+                </th>
+                <th><span th:if="${sort} eq 'lieu' and ${order eq 'desc'}">▲</span><span th:if="${sort} eq 'lieu' and ${order eq 'asc'}">▼</span>
+                    <a th:href="@{/festivals(sort=lieu,order=(${sort} eq 'lieu' ? ${order} : 'asc'))}" th:text="#{festivals.header.place}">Lieu</a></th>
+                <th><span th:if="${sort} eq 'debut' and ${order eq 'desc'}">▲</span><span th:if="${sort} eq 'debut' and ${order eq 'asc'}">▼</span>
+                    <a th:href="@{/festivals(sort=debut,order=(${sort} eq 'debut' ? ${order} : 'asc'))}" th:text="#{festivals.header.start-date}">Début</a></th>
+                <th><span th:if="${sort} eq 'fin' and ${order eq 'desc'}">▲</span><span th:if="${sort} eq 'fin' and ${order eq 'asc'}">▼</span>
+                    <a th:href="@{/festivals(sort=fin,order=(${sort} eq 'fin' ? ${order} : 'asc'))}" th:text="#{festivals.header.end-date}">Fin</a></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="festival : ${festivals}" th:object="${festival}">
                 <td th:text="*{nom}">n.a.</td>
-                <td th:text="*{ville}">n.a.</td>
+                <td th:text="*{ville + ' (' + cp +')'}">n.a.</td>
                 <td th:text="*{lieu}">n.a.</td>
                 <td th:text="${#temporals.format(festival.debut,'dd MMMM yyyy')}">n.a.</td>
                 <td th:text="${#temporals.format(festival.fin,'dd MMMM yyyy')}">n.a.</td>
                 <td>
-                    <button id="btn-edit-festival" class="action-edit-festival" th:id="*{id}">Editer</button>
+                    <button class="action-edit-festival" th:attr="idfestival=*{id}">Editer</button>
+                    <!-- Autre façon de faire :
+                    <button th:onclick="|window.location='/festivals/${festival.id}/edit'|">Edit</button>
+                    -->
                 </td>
             </tr>
             </tbody>
@@ -46,7 +56,7 @@
 <script src="../static/js/carto.js" th:src="@{/js/carto.js}"></script>
 
 <script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
-    addMarkerOnMap([[*{lat}]], [[*{lon}]],[[*{nom}]],[[*{ville}]]);
+    addMarkerOnMap([[*{lat}]],[[*{lon}]],[[*{nom}]],[[*{ville}]]);
 </script>
 
 </body>

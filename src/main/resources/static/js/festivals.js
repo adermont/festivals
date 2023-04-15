@@ -17,8 +17,6 @@ function ajouterFestival(event) {
  * @param {Event} event
  */
 function editerFestival(event) {
-    const buttonId = event.target.id;
-    const festivalId = buttonId.substring(buttonId.lastIndexOf("-"));
+    const festivalId = event.target.attributes['idfestival'].nodeValue;
     document.location.href = `/editer-festival?festivalId=${festivalId}`;
 }
-

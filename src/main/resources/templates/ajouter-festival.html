@@ -5,32 +5,36 @@
     <title th:text="#{festivals.add.title}">Créer un nouveau festival</title>
     <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}">
-    <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/ajouter-festival.css}">
+    <link rel="stylesheet" href="../static/css/ajouter-festival.css" th:href="@{/css/ajouter-festival.css}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 </head>
 <body>
 <h1 th:text="#{festivals.add.title}">Créer un nouveau festival</h1>
-<div class="form-container">
-    <form th:object="${festival}" th:action="@{/ajouter-festival}" method="post">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" th:field="*{nom}">
-        <label for="ville" th:text="#{festivals.header.city}">Ville :</label>
-        <input type="text" id="ville" th:field="*{ville}">
-        <label for="lieu" th:text="#{festivals.header.place}">Lieu :</label>
-        <input type="text" id="lieu" th:field="*{lieu}">
-        <label for="debut" th:text="#{festivals.header.start-date}">Date de début :</label>
-        <input type="date" id="debut" th:field="*{debut}">
-        <label for="fin" th:text="#{festivals.header.end-date}">Date de fin :</label>
-        <input type="date" id="fin" th:field="*{fin}">
-        <label for="lat" th:text="#{festivals.header.lat}">Latitude :</label>
-        <input type="text" id="lat" th:field="*{lat}">
-        <label for="lon" th:text="#{festivals.header.lon}">Longitude :</label>
-        <input type="text" id="lon" th:field="*{lon}">
-        <button id="btn-cancel" type="button" th:text="#{festivals.cancel}">Annuler</button>
-        <button id="btn-ok" type="submit" th:text="#{festivals.save}">Enregistrer</button>
-    </form>
-    <div id="map"></div>
-</div>
+<form th:object="${festival}" th:action="@{/ajouter-festival}" method="post">
+    <div class="form-container">
+        <div class="form">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" th:field="*{nom}">
+            <label for="ville" th:text="#{festivals.header.city}">Ville :</label>
+            <input type="text" id="ville" th:field="*{ville}">
+            <label for="cp" th:text="#{festivals.header.zip}">Code Postal :</label>
+            <input type="number" id="cp" th:field="*{cp}">
+            <label for="lieu" th:text="#{festivals.header.place}">Lieu :</label>
+            <input type="text" id="lieu" th:field="*{lieu}">
+            <label for="debut" th:text="#{festivals.header.start-date}">Date de début :</label>
+            <input type="date" id="debut" th:field="*{debut}">
+            <label for="fin" th:text="#{festivals.header.end-date}">Date de fin :</label>
+            <input type="date" id="fin" th:field="*{fin}">
+            <label for="lat" th:text="#{festivals.header.lat}">Latitude :</label>
+            <input type="text" id="lat" th:field="*{lat}">
+            <label for="lon" th:text="#{festivals.header.lon}">Longitude :</label>
+            <input type="text" id="lon" th:field="*{lon}">
+            <button id="btn-cancel" type="button" th:text="#{festivals.cancel}">Annuler</button>
+            <button id="btn-ok" type="submit" th:text="#{festivals.save}">Enregistrer</button>
+        </div>
+        <div id="map"></div>
+    </div>
+</form>
 <script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="../static/js/ajouter-festival.js" th:src="@{/js/ajouter-festival.js}">
