@@ -9,33 +9,52 @@
 </head>
 <body>
 <h1 th:text="#{festivals.edit.title}">Editer un festival</h1>
-<form th:object="${festival}" th:action="@{/editer-festival}" method="post">
-    <div class="form-container">
+<div class="form-container">
+    <form th:object="${festival}" th:action="@{/editer-festival}" method="post">
         <div class="form">
             <input type="hidden" name="id" th:field="*{id}">
+            <input type="hidden" name="lat" th:field="*{lat}">
+            <input type="hidden" name="lon" th:field="*{lon}">
+
             <label for="name" th:text="#{festivals.header.name}">Nom :</label>
-            <input type="text" id="name" th:field="*{nom}">
+            <div>
+                <input type="text" id="name" th:field="*{nom}">
+                <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Error</span>
+            </div>
             <label for="ville" th:text="#{festivals.header.city}">Ville :</label>
-            <input type="text" id="ville" th:field="*{ville}">
+            <div>
+                <input type="text" id="ville" th:field="*{ville}">
+                <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Error</span>
+            </div>
             <label for="ville" th:text="#{festivals.header.zip}">Code Postal :</label>
-
-
             <div>
                 <input type="number" id="cp" th:field="*{cp}">
                 <span th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}">Error</span>
             </div>
 
             <label for="lieu" th:text="#{festivals.header.place}">Lieu :</label>
-            <input type="text" id="lieu" th:field="*{lieu}">
+            <div>
+                <input type="text" id="lieu" th:field="*{lieu}">
+                <span th:if="${#fields.hasErrors('lieu')}" th:errors="*{lieu}">Error</span>
+            </div>
+
             <label for="debut" th:text="#{festivals.header.start-date}">Date de début :</label>
-            <input type="date" id="debut" th:field="*{debut}">
+            <div>
+                <input type="date" id="debut" th:field="*{debut}">
+                <span th:if="${#fields.hasErrors('debut')}" th:errors="*{fin}">Error</span>
+            </div>
+
             <label for="fin" th:text="#{festivals.header.end-date}">Date de fin :</label>
-            <input type="date" id="fin" th:field="*{fin}">
+            <div>
+                <input type="date" id="fin" th:field="*{fin}">
+                <span th:if="${#fields.hasErrors('fin')}" th:errors="*{fin}">Error</span>
+            </div>
+
             <button id="btn-cancel" type="button" th:text="#{festivals.cancel}">Annuler</button>
             <button id="btn-ok" type="submit" th:text="#{festivals.save}">Enregistrer</button>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 <script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 </body>
 </html>

@@ -3,20 +3,29 @@ package fr.simplon.festivals.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+/**
+ * Annotations Spring Validation : https://beanvalidation.org/2.0/spec/#validationapi
+ */
 @Entity
+@ValidDateOrder(dateMin = "debut", dateMax = "fin")
 public class Festival
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long   id;
+    private Long id;
+
     @NotNull
+    @NotBlank
     private String nom;
 
+    @URL(regexp = "^(http|https)://.*$")
     private String url;
 
     @NotNull
@@ -25,12 +34,14 @@ public class Festival
     @DateTimeFormat(pattern = "yyyy-MM-dd") // Sinon problème formulaire Thymeleaf th:field avec les <input type="date">
     private LocalDate debut;
 
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd") // Sinon problème formulaire Thymeleaf th:field avec les <input type="date">
     private LocalDate fin;
 
     @NotNull
+    @NotBlank
     private String ville;
 
     @Digits(integer = 5, fraction = 0)

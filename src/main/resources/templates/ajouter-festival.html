@@ -6,34 +6,76 @@
     <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}">
     <link rel="stylesheet" href="../static/css/ajouter-festival.css" th:href="@{/css/ajouter-festival.css}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
 </head>
 <body>
 <h1 th:text="#{festivals.add.title}">Créer un nouveau festival</h1>
+<div class="errors" th:if="${#fields.hasErrors('festival')}">
+    <h4 th:text="#{global.errors}">All errors:</h4>
+    <ul>
+        <li th:each="err : ${#fields.errors('festival.*')}" th:text="${err}"/>
+    </ul>
+</div>
 <form th:object="${festival}" th:action="@{/ajouter-festival}" method="post">
     <div class="form-container">
         <div class="form">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" th:field="*{nom}">
+
+            <label for="name" th:text="#{festivals.header.name}">Nom :</label>
+            <div>
+                <input type="text" id="name" th:field="*{nom}">
+                <span th:classappend="error" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Error</span>
+            </div>
             <label for="ville" th:text="#{festivals.header.city}">Ville :</label>
-            <input type="text" id="ville" th:field="*{ville}">
-            <label for="cp" th:text="#{festivals.header.zip}">Code Postal :</label>
-            <input type="number" id="cp" th:field="*{cp}">
+            <div>
+                <input type="text" id="ville" th:field="*{ville}">
+                <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Error</span>
+            </div>
+            <label for="ville" th:text="#{festivals.header.zip}">Code Postal :</label>
+            <div>
+                <input type="number" id="cp" th:field="*{cp}">
+                <span th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}">Error</span>
+            </div>
+
             <label for="lieu" th:text="#{festivals.header.place}">Lieu :</label>
-            <input type="text" id="lieu" th:field="*{lieu}">
+            <div>
+                <input type="text" id="lieu" th:field="*{lieu}">
+                <span th:if="${#fields.hasErrors('lieu')}" th:errors="*{lieu}">Error</span>
+            </div>
+
             <label for="debut" th:text="#{festivals.header.start-date}">Date de début :</label>
-            <input type="date" id="debut" th:field="*{debut}">
+            <div>
+                <input type="date" id="debut" th:field="*{debut}">
+                <span th:if="${#fields.hasErrors('debut')}" th:errors="*{fin}">Error</span>
+            </div>
+
             <label for="fin" th:text="#{festivals.header.end-date}">Date de fin :</label>
-            <input type="date" id="fin" th:field="*{fin}">
+            <div>
+                <input type="date" id="fin" th:field="*{fin}">
+                <span th:if="${#fields.hasErrors('fin')}" th:errors="*{fin}">Error</span>
+            </div>
+
             <label for="lat" th:text="#{festivals.header.lat}">Latitude :</label>
-            <input type="text" id="lat" th:field="*{lat}">
+            <div>
+                <input type="text" id="lat" th:field="*{lat}">
+                <span th:if="${#fields.hasErrors('lat')}" th:errors="*{lat}">Error</span>
+            </div>
+
             <label for="lon" th:text="#{festivals.header.lon}">Longitude :</label>
-            <input type="text" id="lon" th:field="*{lon}">
+            <div>
+                <input type="text" id="lon" th:field="*{lon}">
+                <span th:if="${#fields.hasErrors('lon')}" th:errors="*{lon}">Error</span>
+            </div>
             <button id="btn-cancel" type="button" th:text="#{festivals.cancel}">Annuler</button>
             <button id="btn-ok" type="submit" th:text="#{festivals.save}">Enregistrer</button>
         </div>
         <div id="map"></div>
     </div>
+    <!-- Le code suivant est possible UNIQUEMENT à l'intérieur des balises <form></form>
+    <div th:if="${#fields.hasErrors('global')}">
+        <h3 th:text="#{global.errors}">Global errors:</h3>
+        <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error"/>
+    </div>
+    -->
 </form>
 <script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

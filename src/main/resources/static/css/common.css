@@ -11,7 +11,7 @@ html, body {
     box-sizing: border-box;
 }
 
-.container {
+.container, .containerIndex {
     width: 50%;
     height: calc(100% - 200px);
     overflow: auto;
@@ -24,13 +24,7 @@ html, body {
 
 .containerIndex {
     width: 70%;
-    height: calc(100% - 200px);
-    overflow: auto;
-    margin: auto;
     padding: 5px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px gray;
 }
 
 h1, h2, h3 {
@@ -38,6 +32,15 @@ h1, h2, h3 {
     margin-top: 10px;
     font-family: "Calibri", sans-serif;
     font-weight: bold;
+}
+
+.errors {
+    margin-left: 50px;
+    color: red;
+}
+
+.error {
+    color: red;
 }
 
 button {

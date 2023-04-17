@@ -85,8 +85,11 @@ public class FestivalController
      */
     @PostMapping(path = "/ajouter-festival")
     public String actionAjouterFestival(
-            @ModelAttribute("festival") @Valid Festival festival, BindingResult validation)
+            @ModelAttribute("festival") @Valid Festival festival, BindingResult validation, Model model)
     {
+        model.addAttribute("festival", festival);
+        model.addAttribute("festivalId", festival.getId());
+
         if (!validation.hasErrors())
         {
             festivalDao.save(festival);
